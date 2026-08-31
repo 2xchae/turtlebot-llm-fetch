@@ -64,7 +64,7 @@ GPT 아키텍처 구현(`CausalSelfAttention`, `MLP`, `Block`, `GPT` 등 일부 
 
 ### Sample outputs
 
-아래는 두 번 실행한 예시입니다.
+아래는 사전학습 모델에 프롬프트를 주어 실행한 예시입니다.
 <br>문법적으로 자연스러운 문장을 생성하지만, 사실관계 오류가 있으며 다소 엉뚱한 답변이 섞여 있습니다.
 
 <div align="center">
