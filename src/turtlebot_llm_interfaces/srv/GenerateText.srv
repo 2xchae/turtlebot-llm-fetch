@@ -1,0 +1,11 @@
+# command_parser_node(서비스 클라이언트) -> model_server_node(서비스 서버)
+# prompt는 "명령: {text} 답변: " 
+
+# response_generator_node(서비스 클라이언트) ->  model_server_node(서비스 서버)
+# prompt는 "상태: {status} 답변: " 형태
+
+string prompt
+bool do_sample false
+float32 temperature 1.0
+---
+string generated_text

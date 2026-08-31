@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>turtlebot_llm_robot</name>
+  <version>0.0.1</version>
+  <description>라즈베리파이에서 도는 fetch_robot_node (모터 제어 + YOLO 연동)</description>
+  <maintainer email="aprilclaire175@gmail.com">채</maintainer>
+  <license>Apache-2.0</license>
+
+  <depend>rclpy</depend>
+  <depend>turtlebot_llm_interfaces</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>std_msgs</depend>
+  <!-- ultralytics(YOLO), opencv-python은 rosdep 대상이 아니라 pip로 별도 설치 필요:
+       pip install ultralytics opencv-python -->
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

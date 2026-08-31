@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>turtlebot_llm_pc</name>
+  <version>0.0.1</version>
+  <description>PC(GPU)에서 도는 model_server_node, command_parser_node, response_generator_node</description>
+  <maintainer email="aprilclaire175@gmail.com">채</maintainer>
+  <license>Apache-2.0</license>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>turtlebot_llm_interfaces</depend>
+  <!-- torch, transformers는 rosdep 대상이 아니라 pip로 별도 설치 필요 -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

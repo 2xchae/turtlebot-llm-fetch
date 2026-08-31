@@ -1,0 +1,16 @@
+# response_generator_node(액션 클라이언트) -> fetch_robot_node(액션 서버)
+# goal로 시퀀스 전체를 보내고, 액션 1개 끝날 때마다 feedback으로 결과를 받음
+# 중간 실패해도 계속 진행
+
+# goal
+RobotCommand command
+---
+# result: 시퀀스 전체가 끝난 뒤 요약
+RobotStatus[] statuses
+uint32 success_count
+uint32 fail_count
+---
+# feedback: 액션 1개 끝날 때마다 발행
+uint32 current_index      # 0-based, 방금 끝난 액션의 인덱스
+uint32 total_count
+RobotStatus status         # 방금 끝난 액션의 결과. response_generator가 응답 생성에 사용
