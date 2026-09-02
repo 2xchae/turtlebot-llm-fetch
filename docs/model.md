@@ -5,8 +5,7 @@
   <img src="images/gpt_block.png" height="250">
 </div>
 
-이 모델은 GPT-2 스타일의 모델 아키텍처와 GPT-1 논문에서 제안된 파인튜닝 방식(auxiliary
-언어모델 loss)을 함께 참고하여 설계되었습니다.
+이 모델은 GPT-2 스타일의 모델 아키텍처와 GPT-1 논문에서 제안된 파인튜닝 방식을 함께 참고하여 설계되었습니다.
 
 GPT 아키텍처 구현(`CausalSelfAttention`, `MLP`, `Block`, `GPT` 등 일부 클래스)은 [nanoGPT](https://github.com/karpathy/nanoGPT)(Andrej Karpathy, MIT License)를 기반으로 합니다. 토크나이저 확장, 학습 파이프라인, 생성 로직 등 나머지 구현은 프로젝트에 맞게 직접 구현했습니다.
 
@@ -86,9 +85,9 @@ GPT 아키텍처 구현(`CausalSelfAttention`, `MLP`, `Block`, `GPT` 등 일부 
 <br>`상태: {intent}({슬롯}, result={result}) -> 자연어 문장`
 
 이 표현을 다양화 하기 위한 데이터 생성 규칙을 직접 설계하고, Claude의 도움을 받아 조합 기반으로 데이터를 생성하였습니다.
-<br><sub>상세 생성 규칙은 [finetuning_data_rules.md](finetuning_data_rules.md) 참고
+<br>(상세 생성 규칙은 [finetuning_data_rules.md](finetuning_data_rules.md) 참고)
 
-#### 최종 데이터셋
+**최종 데이터셋**
 | Split | 문장 수 |
 |---|---:|
 | Train | 584,410 |
@@ -189,10 +188,9 @@ loss = l2_loss + LAMBDA_LM * l1_loss   # LAMBDA_LM = 0.3
 | | |
 |---|---|
 | Best val loss | 0.1862 |
-| Test 정확도 (exact match) | **97.67%** (79,069/80,959) |
+| Test 정확도 (exact match) | 97.67% (79,069/80,959) |
 
-카테고리별 정확도:
-
+**카테고리별 정확도**
 | 액션 | 정확도 |
 |---|---:|
 | search | 99.8% |
@@ -200,8 +198,7 @@ loss = l2_loss + LAMBDA_LM * l1_loss   # LAMBDA_LM = 0.3
 | move | 98.0% |
 | perform | 97.9% |
 
-시퀀스 길이별 정확도:
-
+**시퀀스 길이별 정확도**
 | 길이 | 정확도 |
 |---|---:|
 | 1 | 94.3% |
@@ -210,23 +207,23 @@ loss = l2_loss + LAMBDA_LM * l1_loss   # LAMBDA_LM = 0.3
 | 4 | 99.8% |
 | 5 | 95.1% |
 
-길이 1(단일 액션)에서의 비교적 낮은 정확도는 상태 응답 생성 태스크에서 "정답과 의미는 같지만 표현이 다른" 경우가 오답으로 집계된 결과입니다 (ex: 정답 "죄송해요, 사람 찾는 데 실패했어요."vs 예측 "사람 찾기를 실패했습니다.")
+<br>길이 1(단일 액션)에서의 비교적 낮은 정확도는 상태 응답 생성 태스크에서 "정답과 의미는 같지만 표현이 다른" 경우가 오답으로 집계된 결과입니다. (ex: 정답 "죄송해요, 사람 찾는 데 실패했어요."vs 예측 "사람 찾기를 실패했습니다.")
 
-<br>길이 5(최장 시퀀스)의 오답은 대부분 `max_new_tokens=80` 설정 제한으로 인한 생성 중간 절단입니다.이로 인해 실제 로봇 제어 파이프라인(model_server_node)에서는 max_new_tokens를 200으로 늘려 사용하도록 하였습니다. 
+<br>길이 5(최장 시퀀스)의 오답은 대부분 `max_new_tokens=80` 설정 제한으로 인한 생성 중간 절단입니다. 이로 인해 실제 로봇 제어 파이프라인(model_server_node)에서는 max_new_tokens를 200으로 늘려 사용하도록 하였습니다. 
 
 ### Sample outputs
 
 자유 발화 입력에 대한 테스트와 자연어 응답을 생성한 예시입니다.
 <div align="center">
   <img src="images/finetuning_sample_outputs_2.png" width="500">
-  <img src="images/finetuning_sample_outputs_3.png" width="600">
+  <img src="images/finetuning_sample_outputs_3.png" width="500">
 </div>
 
 <div align="center">
   <img src="images/finetuning_sample_outputs_1.png" width="500">
 </div>
 
-오탈자나 붙여쓰기, 초성체가 섞인 입력도 대체로 가능하지만, 일부 예외도 있습니다.
+<br>오탈자나 붙여쓰기, 초성체가 섞인 입력도 대체로 가능하지만 틀린 답을 생성하는 경우도 있습니다.
 
 ### Limitations
 
