@@ -3,13 +3,14 @@
 ## Overview
 
 <div align="center">
-  <img src="images/architecture.png" width="600">
+  <img src="images/architecture.png" width="500">
 </div>
 
-이 프로젝트는 PC와 Raspberry Pi에 나뉘어 실행됩니다. 각 영역에서 실행되는 ROS2 노드들이
+
+<br>이 프로젝트는 PC와 Raspberry Pi에 나뉘어 실행됩니다.<br>각 영역에서 실행되는 노드들이
 토픽/서비스/액션으로 통신하며 하나의 파이프라인을 이룹니다.
 
-- **PC**: 사용자가 입력한 자연어 명령을 GPT 모델로 파싱하고 실행 결과를 자연어로 응답하는 역할
+- **PC**: 사용자가 입력한 자연어 명령을 GPT 모델로 파싱하고 실행 결과를 자연어로 응답
 
 - **Raspberry Pi**: YOLO 기반 물체 탐색과 실제 모터 제어를 담당하고 카메라 입력을 처리
 
@@ -19,7 +20,7 @@
   <img src="images/overview_pipeline_flow.png" width="200">
 </div>
 
-(상세 노드 구성은 [Nodes](#nodes), 통신 구조는 [Communication](#communication),
+<br>(상세 노드 구성은 [Nodes](#nodes), 통신 구조는 [Communication](#communication),
 동시성 처리는 [Concurrency design](#concurrency-design) 참고)
 
 ## Nodes
@@ -96,7 +97,7 @@ GPT 체크포인트를 1회 로딩하고 `generate_text` 서비스로 노출합�
 
 콜백을 3개의 그룹으로 나누어 동시 실행을 관리하였습니다.
 
-| 콜백그룹 | 타입 | 담당 콜백 | 이유 |
+| 콜백그룹 | 타입 | 담당 콜백 | - |
 |---|---|---|---|
 | `action_cb_group` | `Reentrant` | `execute_callback`, `goal_callback` | `execute_callback`이 대기 중이어도 `goal_callback`이 새 goal 요청을 처리할 수 있어야 함 |
 | `sensor_cb_group` | `MutuallyExclusive` | `image_callback` | 공유 변수를 프레임마다 순서대로 갱신해 race condition 방지 |
