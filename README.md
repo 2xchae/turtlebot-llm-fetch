@@ -76,7 +76,7 @@ src/
 ## Documentation
 
 - [Architecture](docs/architecture.md) — 노드/토픽/서비스/액션 구조, 동시성 설계
-- [Model](docs/model.md) — GPT 아키텍처, 학습 데이터, 학습 과정에서의 시행착오
+- [Model](docs/model.md) — GPT 아키텍처, 학습 데이터, 학습 과정과 한계
 - [Setup & Usage](docs/setup.md) — 빌드, 실행, 명령 예시
 - [PC 패키지](src/turtlebot_llm_pc/README.md)
 - [Robot 패키지](src/turtlebot_llm_robot/README.md)
