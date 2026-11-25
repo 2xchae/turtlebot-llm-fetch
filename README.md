@@ -5,9 +5,13 @@
 GPT 아키텍처를 구현하고 직접 학습시킨 모델이 자연어 명령을 이해하여 로봇이 실행할 수 있는 명령으로 변환하고, 실행 결과를 다시 자연어 응답으로 생성합니다.
 
 <p align="center">
-  <img src="docs/images/overview1.jpg" width="48%" alt="overview1">
-  <img src="docs/images/overview2.gif" width="48%" alt="overview2">
+  <a href="https://youtu.be/r1YfNDz-Lh8?si=tZvmNhyEkiKGnl7a">시연 영상 보러 가기</a>
 </p>
+
+<p align="center">
+  <img src="docs/images/overview1.jpg" width="60%">
+</p>
+
 
 ## Environment
 ROS2(Humble) 기반으로 동작합니다.
